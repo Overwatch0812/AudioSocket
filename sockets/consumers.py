@@ -283,9 +283,10 @@ class SyncAudioSocketConsumer(AsyncConsumer):
             paper='''What is DSA?,
                 Define Machine learning.
                 Explain merge sort.
-                How to deploy a  Machine learning model??'''
+                How to deploy a Machine learning model??'''
             res=cosine(text.lower(),paper.lower())
             if int(res) > 20:
+                speak("Alert: similarity detected in the audio.")
                 op = "alert"
         await self.send({'type':'websocket.send',
         'text':op})
